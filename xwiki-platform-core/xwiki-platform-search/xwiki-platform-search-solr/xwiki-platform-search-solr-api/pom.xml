@@ -53,6 +53,14 @@
       <groupId>org.apache.solr</groupId>
       <artifactId>solr-core</artifactId>
     </dependency>
+    <!-- jersey-server seems to indirectly depend on javax validation despite the fact that it's supposed to use
+         jakarta validation 
+         TODO: Remove when upgrading Solr and Jersey to a full jakarta version
+    -->
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.apache.solr</groupId>
       <artifactId>solr-analysis-extras</artifactId>
@@ -132,11 +140,6 @@
       <groupId>org.xwiki.commons</groupId>
       <artifactId>xwiki-commons-tool-test-component</artifactId>
       <version>${commons.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>

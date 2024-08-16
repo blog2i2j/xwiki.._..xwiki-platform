@@ -17,16 +17,37 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.xwiki.wysiwyg.filter;
+package org.xwiki.container.internal.script;
+
+import org.xwiki.container.Response;
+import org.xwiki.container.wrap.WrappingResponse;
+import org.xwiki.security.authorization.ContextualAuthorizationManager;
+import org.xwiki.security.authorization.Right;
 
 /**
- * This filter can be used to initialize the XWiki context before processing a request.
+ * A wrapper around {@link Response} with security related checks.
  * 
  * @version $Id$
- * @deprecated since 13.4RC1, use {@link com.xpn.xwiki.web.XWikiContextInitializationFilter} instead
+ * @since 42.0.0
  */
-@Deprecated
-public class XWikiContextInitializationFilter extends com.xpn.xwiki.web.XWikiContextInitializationFilter
+public class ScriptResponse extends WrappingResponse
 {
+    private final ContextualAuthorizationManager authorization;
 
+    /**
+     * @param response the wrapped response
+     * @param authorization used to check rights of the current author
+     */
+    public ScriptResponse(Response response, ContextualAuthorizationManager authorization)
+    {
+        super(response);
+
+        this.authorization = authorization;
+    }
+
+    @Override
+    public Response getResponse()
+    {
+        return this.authorization.hasAccess(Right.PROGRAM) ? super.getResponse() : null;
+    }
 }
