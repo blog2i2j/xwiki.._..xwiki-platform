@@ -629,6 +629,8 @@ public class XWikiDocument implements DocumentModelBridge, Cloneable
     // Caching
     private boolean fromCache = false;
 
+    private boolean cached;
+
     private List<BaseObject> xObjectsToRemove = new ArrayList<BaseObject>();
 
     private List<XWikiAttachmentToRemove> attachmentsToRemove = new ArrayList<XWikiAttachmentToRemove>();
@@ -4098,6 +4100,27 @@ public class XWikiDocument implements DocumentModelBridge, Cloneable
     public String displayForm(String className, XWikiContext context)
     {
         return displayForm(resolveClassReference(className), context);
+    }
+
+    /**
+     * Indicate if this {@link XWikiDocument} is currently in the document, implying that it's potentially shared with
+     * several threads.
+     * 
+     * @return true if this {@link XWikiDocument} is in the document cache
+     * @since 16.9.0RC1
+     */
+    public boolean isCached()
+    {
+        return this.cached;
+    }
+
+    /**
+     * @param cached true if this {@link XWikiDocument} is in the document cache
+     * @since 16.9.0RC1
+     */
+    public void setCached(boolean cached)
+    {
+        this.cached = cached;
     }
 
     public boolean isFromCache()
