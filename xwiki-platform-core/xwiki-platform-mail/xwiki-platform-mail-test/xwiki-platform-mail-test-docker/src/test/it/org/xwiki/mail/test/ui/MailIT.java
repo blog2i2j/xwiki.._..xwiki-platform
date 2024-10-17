@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
 
 import javax.mail.internet.MimeMessage;
 
-import org.apache.commons.httpclient.UsernamePasswordCredentials;
+import org.apache.hc.client5.http.auth.UsernamePasswordCredentials;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
