@@ -815,7 +815,7 @@
     }
 
     function init() {
-      XWiki = window.XWiki || {};
+      const XWiki = globalThis.XWiki = globalThis.XWiki || {};
       XWiki.editors = XWiki.editors || {};
       XWiki.editors.XDataEditors = new XDataEditors();
       initSwitchClassListener();
