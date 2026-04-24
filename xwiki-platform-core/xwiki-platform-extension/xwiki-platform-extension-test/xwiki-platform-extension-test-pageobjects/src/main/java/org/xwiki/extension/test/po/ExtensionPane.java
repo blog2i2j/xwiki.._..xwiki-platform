@@ -231,7 +231,7 @@ public class ExtensionPane extends BaseElement
      */
     private ExtensionPane clickAndWaitForConfirmationOrJobDone(WebElement button, int timeout)
     {
-        // Wait until the the continue button is present or the extension is not loading and both the extension body and
+        // Wait until the continue button is present or the extension is not loading and both the extension body and
         // the progress section are present and not loading.
         return clickAndWaitUntilElementIsVisible(button,
             "[descendant::button[@name = 'extensionAction' and @value = 'continue' and not(@disabled)] or ("
@@ -312,6 +312,18 @@ public class ExtensionPane extends BaseElement
     }
 
     /**
+     * Clicks on the upgrade button and waits for the upgrade plan to be computed.
+     *
+     * @param timeout the maximum number of seconds to wait for the end
+     * @return the extension pane displaying the upgrade plan
+     * @since 18.4.0RC1
+     */
+    public ExtensionPane upgrade(int timeout)
+    {
+        return maybeOpenActionDropDownMenu().clickAndWaitForConfirmationOrJobDone(getUpgradeButton(), timeout);
+    }
+
+    /**
      * @return the upgrade button, if present
      */
     public WebElement getUpgradeButton()
@@ -327,6 +339,18 @@ public class ExtensionPane extends BaseElement
     public ExtensionPane downgrade()
     {
         return maybeOpenActionDropDownMenu().clickAndWaitForConfirmationOrJobDone(getDowngradeButton());
+    }
+
+    /**
+     * Clicks on the downgrade button and waits for the downgrade plan to be computed.
+     *
+     * @param timeout the maximum number of seconds to wait for the end
+     * @return the extension pane displaying the downgrade plan
+     * @since 18.4.0RC1
+     */
+    public ExtensionPane downgrade(int timeout)
+    {
+        return maybeOpenActionDropDownMenu().clickAndWaitForConfirmationOrJobDone(getDowngradeButton(), timeout);
     }
 
     /**
