@@ -37,6 +37,7 @@ import com.xpn.xwiki.test.MockitoOldcore;
 import com.xpn.xwiki.test.junit5.mockito.OldcoreTest;
 import com.xpn.xwiki.user.api.XWikiRightService;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -168,10 +169,10 @@ class XWikiDocumentArchiveTest
         doc.setContent(doc.getContent() + "\nsomething added");
         archive.updateArchive(doc, XWikiRightService.GUEST_USER_FULLNAME, new Date(), "some comment", null, context);
 
-        // Try to construct again the archive from the last modification. This will happen when
-        // XWiki loads a document from the database for example. We verify here that a username
-        // with a space works.
-        new XWikiDocumentArchive(123456789L).setArchive(archive.getArchive(context));
+        // Try to construct again the archive from the last modification. This will happen when XWiki loads a document
+        // from the database, for example. We verify here that a username with a space works and not cause an exception
+        // to be raised.
+        assertDoesNotThrow(() -> new XWikiDocumentArchive(123456789L).setArchive(archive.getArchive(context)));
     }
 
     @Test
