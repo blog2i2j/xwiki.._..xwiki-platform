@@ -55,7 +55,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @since 12.10.6
  * @since 13.2RC1
  */
-@UITest
+@UITest(
+    extraJARs = {
+        // The macro service uses the extension index script service to get the list of uninstalled macros (from
+        // extensions) which expects an implementation of the extension index. The extension index script service is a
+        // core extension so we need to make the extension index also core.
+        "org.xwiki.platform:xwiki-platform-extension-index"
+    },
+    resolveExtraJARs = true
+)
 class InplaceEditIT
 {
     @BeforeAll
