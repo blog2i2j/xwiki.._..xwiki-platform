@@ -111,6 +111,6 @@ public class VelocityMacroSecurityTest
 
         mocker.getComponentUnderTest().execute(params, "#macro(testMacrosAreLocal)mymacro#end", context);
 
-        verify(authorizationManager.hasAccess(Right.SCRIPT));
+        verify(authorizationManager).hasAccess(Right.SCRIPT);
     }
 }
