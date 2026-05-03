@@ -375,18 +375,20 @@ public class PackageMojo extends AbstractOldCoreMojo
         // Since the jar comes from a trusted source, there is no risk of "zip slip" attack. Consequently, the
         // entries of the jar do not need to be validated.
         try (JarInputStream jarInputStream =
-            new JarInputStream(new FileInputStream(configurationResourcesArtifact.getFile()))) {
+            new JarInputStream(new FileInputStream(configurationResourcesArtifact.getFile())))
+        {
             JarEntry entry;
             while ((entry = jarInputStream.getNextJarEntry()) != null) {
                 if (entry.getName().endsWith(".vm")) {
                     String fileName = entry.getName().replace(".vm", "");
                     File outputFile = new File(configurationFileTargetDirectory, fileName);
-                    OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(outputFile));
-                    getLog().info("Writing config file: " + outputFile);
-                    // Note: Init is done once even if this method is called several times...
-                    Velocity.init();
-                    Velocity.evaluate(context, writer, "", IOUtils.toString(jarInputStream, StandardCharsets.UTF_8));
-                    writer.close();
+                    try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(outputFile))) {
+                        getLog().info("Writing config file: " + outputFile);
+                        // Note: Init is done once even if this method is called several times...
+                        Velocity.init();
+                        Velocity.evaluate(context, writer, "", IOUtils.toString(jarInputStream,
+                            StandardCharsets.UTF_8));
+                    }
                     jarInputStream.closeEntry();
                 }
             }
