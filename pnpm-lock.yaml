@@ -127,8 +127,8 @@ catalogs:
       specifier: 1.0.2
       version: 1.0.2
     globals:
-      specifier: 17.4.0
-      version: 17.4.0
+      specifier: 17.6.0
+      version: 17.6.0
     i18next:
       specifier: 25.10.10
       version: 25.10.10
@@ -386,7 +386,7 @@ importers:
         version: 9.39.4(jiti@2.6.1)
       globals:
         specifier: 'catalog:'
-        version: 17.4.0
+        version: 17.6.0
       jiti:
         specifier: 'catalog:'
         version: 2.6.1
@@ -664,7 +664,7 @@ importers:
         version: 9.39.4(jiti@2.6.1)
       globals:
         specifier: 'catalog:'
-        version: 17.4.0
+        version: 17.6.0
       publint:
         specifier: 'catalog:'
         version: 0.3.18
@@ -4928,8 +4928,8 @@ packages:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
 
-  globals@17.4.0:
-    resolution: {integrity: sha512-hjrNztw/VajQwOLsMNT1cbJiH2muO3OROCHnbehc8eY5JyD2gqz4AcMHPqgaOR59DjgUjYAYLeH699g/eWi2jw==}
+  globals@17.6.0:
+    resolution: {integrity: sha512-sepffkT8stwnIYbsMBpoCHJuJM5l98FUF2AnE07hfvE0m/qp3R586hw4jF4uadbhvg1ooIdzuu7CsfD2jzCaNA==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -9724,7 +9724,7 @@ snapshots:
 
   globals@14.0.0: {}
 
-  globals@17.4.0: {}
+  globals@17.6.0: {}
 
   globalthis@1.0.4:
     dependencies:
