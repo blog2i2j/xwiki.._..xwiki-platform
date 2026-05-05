@@ -12,6 +12,7 @@ packages:
   - xwiki-platform-core/xwiki-platform-node/src/main/node/core/authentication/authentication-api
   - xwiki-platform-core/xwiki-platform-node/src/main/node/core/backends/backend-api
   - xwiki-platform-core/xwiki-platform-node/src/main/node/core/collaboration/collaboration-api
+  - xwiki-platform-core/xwiki-platform-node/src/main/node/core/collaboration/collaboration-xwiki
   - xwiki-platform-core/xwiki-platform-node/src/main/node/core/configuration/configuration-api
   - xwiki-platform-core/xwiki-platform-node/src/main/node/core/document/document-api
   - xwiki-platform-core/xwiki-platform-node/src/main/node/core/ds/api
@@ -101,6 +102,7 @@ catalog:
   jiti: 2.6.1
   jquery: 4.0.0
   jsdom: 28.1.0
+  lib0: 0.2.117
   lodash-es: 4.18.1
   lz-string: 1.5.0
   mdast-util-gfm-strikethrough: 2.0.0
@@ -144,4 +146,5 @@ catalog:
   vue-tsc: 3.2.7
   vue3-touch-events: 5.0.15
   vuedraggable: 4.1.0
+  y-websocket: 3.0.0
   yjs: 13.6.29

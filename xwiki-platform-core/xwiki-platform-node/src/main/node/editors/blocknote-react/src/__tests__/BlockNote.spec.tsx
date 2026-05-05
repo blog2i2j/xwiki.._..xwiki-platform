@@ -82,9 +82,8 @@ test("Image insertion UI can be overriden", async ({ mount }) => {
   const imgEl = editorEl.locator("img.bn-visual-media");
   await imgEl.waitFor({ state: "attached" });
 
-  // Trigger the toolbar by going to the end of the document and then selecting the image
-  await editorEl.press("ArrowDown");
-  await editorEl.press("ArrowUp");
+  // Trigger the toolbar by selecting the image.
+  await imgEl.click();
 
   const toolbarEl = component.locator(".bn-toolbar.bn-formatting-toolbar");
   await toolbarEl.waitFor({ state: "attached" });

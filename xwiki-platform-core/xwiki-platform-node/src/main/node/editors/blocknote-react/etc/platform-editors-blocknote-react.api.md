@@ -12,7 +12,7 @@ import { BlockNoteEditorOptions } from '@blocknote/core';
 import { BlockNoteSchema } from '@blocknote/core';
 import { BlockSchemaFromSpecs } from '@blocknote/core';
 import { BlockSpec } from '@blocknote/core';
-import { CollaborationInitializer } from '@xwiki/platform-collaboration-api';
+import { Collaboration } from '@xwiki/platform-collaboration-api';
 import { CustomInlineContentConfig } from '@blocknote/core';
 import { DefaultInlineContentSchema } from '@blocknote/core';
 import { DefaultReactSuggestionItem } from '@blocknote/react';
@@ -62,6 +62,7 @@ export type BlockNoteConcreteMacro = {
 // @beta
 export type BlockNoteViewWrapperProps = {
     blockNoteOptions?: Partial<Omit<DefaultBlockNoteEditorOptions, "schema" | "collaboration">>;
+    name?: string;
     theme?: "light" | "dark";
     lang: EditorLanguage;
     label: string;
@@ -70,13 +71,7 @@ export type BlockNoteViewWrapperProps = {
         list: MacroWithUnknownParamsType[];
         ctx: ContextForMacros;
     } | false;
-    realtime?: {
-        collaborationProvider: () => CollaborationInitializer;
-        user: {
-            name: string;
-            color: string;
-        };
-    };
+    collaboration?: Collaboration;
     onChange?: (editor: EditorType) => void;
     linkEditionCtx: LinkEditionContext;
     overrides?: {
